@@ -7,6 +7,12 @@ Interface qui permet de gérer ses candidatures.
 - Candidature envoyée il y plus de 5 jours et on n'a pas encore rappelé.
 - On a déjà rappelé l'entreprise mais pas de nouvelles depuis plus de 5 jours depuis.
 
+
+Il faut créer une base de données "emploi" et lancer le script (/BDD A CREER/enregistrement.sql) pour créer la table.
+
+Accessible depuis localhost/emploi/
+
+
 créé sur la base de SB Admin
 https://startbootstrap.com/template-overviews/sb-admin/
 
