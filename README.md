@@ -8,7 +8,7 @@ Interface qui permet de gérer ses candidatures.
 - On a déjà rappelé l'entreprise mais pas de nouvelles depuis plus de 5 jours depuis.
 
 
-Il faut créer une base de données "emploi" et lancer le script (/BDD A CREER/enregistrement.sql) pour créer la table.
+Il faut créer une base de données "emploi" et créer la table (/BDD A CREER/enregistrement.sql).
 
 Accessible depuis localhost/emploi/
 
