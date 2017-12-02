@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 26 Novembre 2017 à 13:59
+-- Généré le :  Sam 02 Décembre 2017 à 15:51
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `emploi`
 --
+CREATE DATABASE IF NOT EXISTS `emploi` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `emploi`;
 
 -- --------------------------------------------------------
 
@@ -56,7 +58,7 @@ ALTER TABLE `enregistrement`
 -- AUTO_INCREMENT pour la table `enregistrement`
 --
 ALTER TABLE `enregistrement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
