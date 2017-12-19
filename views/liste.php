@@ -56,7 +56,7 @@
         <i class="fa fa-table"></i> Liste des demandes</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style='font-size:12px;'>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style='font-size:11px;'>
               <thead>
                 <tr>
                   <th style='display:none;'>ID</th>
