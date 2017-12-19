@@ -85,7 +85,9 @@
                       echo "<td>";
                       $array_liens = explode(" ", $cand["lien_annonce"]);
                       foreach ($array_liens as $lien) {
-                        echo "<a target=_blank href=$lien>$lien<br>";
+                        if ($lien != "") {
+                          echo "<a target=_blank href=$lien>$lien<br>";
+                        }
                       }
                       echo "</td>";
                       ?>
