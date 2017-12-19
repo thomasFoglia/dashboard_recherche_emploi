@@ -80,35 +80,44 @@
                     <td><a target=_blank href="https://www.google.fr/maps/place/<?= $cand["adresse"] ?>"><?= $cand["adresse"] ?></td>
                       <td><?= $cand["mail"] ?></td>
                       <td><?= $cand["telephone"] ?></td>
-                      <td><a target=_blank href="<?= $cand["lien_annonce"] ?>"><?= $cand["lien_annonce"] ?></td>
+
+                      <?php
+                      echo "<td>";
+                      $array_liens = explode(" ", $cand["lien_annonce"]);
+                      foreach ($array_liens as $lien) {
+                        echo "<a target=_blank href=$lien>$lien<br>";
+                      }
+                      echo "</td>";
+                      ?>
+
                       <td><?= $cand["commentaire"] ?></td>
-                        <?php
-                        if($cand["reponse"] == "non") {
-                          $dateRappel = "Non";
-                        } else if($cand["dateRappel"] == null) {
-                          $dateRappel = "<button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Oui</button>";
-                        } else {
-                          $dateRappel = date("d/m/Y", strtotime($cand["dateRappel"]));
-                        }
-                        ?>
-                        <td><?= $dateRappel ?></td>
-                        <td>
-                          <?php if($cand["reponse"] == "non") {
-                            echo "Non";
-                          } else { ?>
-                            <select class="btn_reponse form-control">
-                              <option></option>
-                              <option value='non'>Non</option>
-                            </select>
-                          <?php } ?>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
+                      <?php
+                      if($cand["reponse"] == "non") {
+                        $dateRappel = "Non";
+                      } else if($cand["dateRappel"] == null) {
+                        $dateRappel = "<button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Oui</button>";
+                      } else {
+                        $dateRappel = date("d/m/Y", strtotime($cand["dateRappel"]));
+                      }
+                      ?>
+                      <td><?= $dateRappel ?></td>
+                      <td>
+                        <?php if($cand["reponse"] == "non") {
+                          echo "Non";
+                        } else { ?>
+                          <select class="btn_reponse form-control">
+                            <option></option>
+                            <option value='non'>Non</option>
+                          </select>
+                        <?php } ?>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
             </div>
-            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
           </div>
+          <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
         </div>
       </div>
+    </div>
