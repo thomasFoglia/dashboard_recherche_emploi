@@ -13,10 +13,11 @@ if (
   $telephone = $_POST["telephone"];
   $mail = $_POST["mail"];
   $dateRappel = null;
+  $commentaire = $_POST["commentaire"];
   $lien_annonce = $_POST["lien_annonce"];
   $reponse =  null;
-    
-  $candidature = new Candidature($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $lien_annonce, $reponse);
+
+  $candidature = new Candidature($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
   $candidature->save();
   echo "<script type='text/javascript'>document.location.replace('/emploi/');</script>";
 }
@@ -56,6 +57,10 @@ if (
               <div class="form-group">
                 <label for="lien_annonce">URL vers l'annonce</label>
                 <input class="form-control" id="lien_annonce" name="lien_annonce" type="text" placeholder="URL vers l'annonce">
+              </div>
+              <div class="form-group">
+                <label for="lien_annonce">Commentaire</label>
+                <input class="form-control" id="commentaire" name="commentaire" type="text" placeholder="Commentaire">
               </div>
 
               <br>

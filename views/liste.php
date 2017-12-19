@@ -66,6 +66,7 @@
                   <th>Mail</th>
                   <th>Téléphone</th>
                   <th>Lien annonce</th>
+                  <th>Commentaire</th>
                   <th>Rappelé?</th>
                   <th>Réponse</th>
                 </tr>
@@ -80,6 +81,7 @@
                       <td><?= $cand["mail"] ?></td>
                       <td><?= $cand["telephone"] ?></td>
                       <td><a target=_blank href="<?= $cand["lien_annonce"] ?>"><?= $cand["lien_annonce"] ?></td>
+                      <td><?= $cand["commentaire"] ?></td>
                         <?php
                         if($cand["reponse"] == "non") {
                           $dateRappel = "Non";

@@ -23,6 +23,7 @@ class BDD {
     $this->dateDemande = $obj->dateDemande;
     $this->telephone = $obj->telephone;
     $this->mail = $obj->mail;
+    $this->commentaire = $obj->commentaire;
     $this->dateRappel = $obj->dateRappel;
     $this->lien_annonce = $obj->lien_annonce;
     $this->reponse = $obj->reponse;
@@ -55,6 +56,10 @@ class BDD {
     }
   }
 
+  public function update() {
+    die("controller update");
+  }
+
   public function insert() {
 
     $entreprise = $this->entreprise;
@@ -63,9 +68,10 @@ class BDD {
     $telephone = $this->telephone;
     $mail = $this->mail;
     $lien_annonce = $this->lien_annonce;
+    $commentaire = $this->commentaire;
 
-    $sql = "INSERT INTO enregistrement (`entreprise`, `adresse`, `dateDemande`, `telephone`, `mail`, `dateRappel`, `lien_annonce`, `reponse`)
-    VALUES ('".$entreprise."', '".$adresse."', '".$dateDemande."', '".$telephone."', '".$mail."', null, '".$lien_annonce."', null)";
+    $sql = "INSERT INTO enregistrement (`entreprise`, `adresse`, `dateDemande`, `telephone`, `mail`, `dateRappel`,`commentaire`, `lien_annonce`, `reponse`)
+    VALUES ('".$entreprise."', '".$adresse."', '".$dateDemande."', '".$telephone."', '".$mail."', null, '".$commentaire."', '".$lien_annonce."', null)";
     $req = $this->db->prepare($sql);
     $ret = $req->execute(array(
       "entreprise" => $entreprise,
@@ -73,6 +79,7 @@ class BDD {
       "dateDemande" => $dateDemande,
       "telephone" => $telephone,
       "mail" => $mail,
+      "commentaire" => $commentaire,
       "lien_annonce" => $lien_annonce
     ));
 
@@ -157,7 +164,7 @@ class BDD {
         "dateRappel" => $dateRappel
       );
     }
-    
+
     // pas rappelé au bout de 5 jours après le premier rappel
     $sql = "SELECT * FROM enregistrement WHERE `dateRappel` IS NOT NULL AND `dateRappel` <= '$date_max' AND `reponse` IS NULL";
     $stmt = $this->db->prepare($sql);

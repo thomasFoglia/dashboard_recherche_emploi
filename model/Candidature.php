@@ -10,6 +10,7 @@ public $dateDemande;
 public $telephone;
 public $mail;
 public $dateRappel;
+public $commentaire;
 public $lien_annonce;
 public $reponse;
 
@@ -21,6 +22,7 @@ $dateDemande =null,
 $telephone = null,
 $mail = null,
 $dateRappel = null,
+$commentaire = null,
 $lien_annonce = null,
 $reponse = null) {
 
@@ -31,6 +33,7 @@ $reponse = null) {
   $this->telephone = $telephone;
   $this->mail = $mail;
   $this->dateRappel = $dateRappel;
+  $this->commentaire = $commentaire;
   $this->lien_annonce = $lien_annonce;
   $this->reponse = $reponse;
 
