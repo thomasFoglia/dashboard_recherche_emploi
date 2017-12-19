@@ -36,29 +36,29 @@ if (
     <div class="row">
       <div class="col-lg-12">
         <div class="container">
-          <div class="card-body">
+          <div class="card-body" style='padding:0 !important;'>
             <form action="" method='post'>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="entreprise">Entreprise</label>
                 <input class="form-control" id="entreprise" name="entreprise" type="text" placeholder="Nom de l'entreprise" required>
               </div>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="adresse">Adresse</label>
                 <input class="form-control" id="adresse" name="adresse" type="text" placeholder="Adresse">
               </div>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="telephone">Téléphone</label>
                 <input class="form-control" id="telephone" name="telephone" type="text" placeholder="Téléphone">
               </div>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="mail">Mail</label>
                 <input class="form-control" id="mail" name="mail" type="email" placeholder="Mail">
               </div>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="lien_annonce">URL vers l'annonce</label>
                 <input class="form-control" id="lien_annonce" name="lien_annonce" type="text" placeholder="URL vers l'annonce">
               </div>
-              <div class="form-group">
+              <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="lien_annonce">Commentaire</label>
                 <input class="form-control" id="commentaire" name="commentaire" type="text" placeholder="Commentaire">
               </div>

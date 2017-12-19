@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    <!-- <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
         <a class="nav-link" href="index.php">
           <i class="fa fa-fw fa-table"></i>
@@ -23,14 +23,14 @@
           <span class="nav-link-text">Fonctionnement</span>
         </a>
       </li>
-</ul>
-<ul class="navbar-nav sidenav-toggler">
+</ul> -->
+<!-- <ul class="navbar-nav sidenav-toggler">
   <li class="nav-item">
     <a class="nav-link text-center" id="sidenavToggler">
       <i class="fa fa-fw fa-angle-left"></i>
     </a>
   </li>
-</ul>
+</ul> -->
 <ul class="navbar-nav ml-auto" style="margin:0!important;">
 </li>
 <li class="nav-item dropdown">
@@ -46,6 +46,29 @@
     <i class="" style="font-weight:bold;padding: 0 8px;font-size: 14px; "><?= $total_a_relancer ?></i>
   </span>
 </a>
+</li>
+
+<li>
+  <a class="nav-link" href="index.php">
+    <i class="fa fa-fw fa-table"></i>
+    <span class="nav-link-text">Tableau de bord</span>
+  </a>
+</li>
+
+<li>
+  <a class="nav-link" href="candidature.php">
+    <i class="fa fa-fw fa-plus"></i>
+    <span class="nav-link-text">Nouvelle candidature</span>
+  </a>
+</li>
+
+<li>
+  <a class="nav-link" href="fonctionnement.php">
+    <i class="fa fa-fw fa-question"></i>
+    <span class="nav-link-text">Fonctionnement</span>
+  </a>
+</li>
+
 <?php if ($total_a_relancer > 0) { ?>
   <div class="dropdown-menu" aria-labelledby="alertsDropdown"style="width: 550px;">
     <h6 class="dropdown-header"><?= $total_a_relancer ?> entreprises à relancer :</h6>

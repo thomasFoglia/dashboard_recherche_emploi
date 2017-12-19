@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="margin-left:0;">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
