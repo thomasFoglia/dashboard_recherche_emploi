@@ -352,5 +352,5 @@ th {
 
 
 .table-responsive {
-  overflow: hidden!;
+  overflow: hidden !important;
 }
