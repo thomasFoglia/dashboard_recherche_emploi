@@ -349,3 +349,8 @@ footer.sticky-footer {
 th {
   white-space: nowrap !important;
 }
+
+
+.table-responsive {
+  overflow: hidden!;
+}
