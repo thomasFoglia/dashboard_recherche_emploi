@@ -88,7 +88,7 @@
                     // candidatures dont on n'a pas les coordonnées pour rappeler
                     $style_tr = "";
                     if ($cand["mail"] == "" && $cand["telephone"] == "") {
-                      $style_tr = "#D4D4D4"; // gris
+                      $style_tr = "#f4f4f4"; // gris
                     }
                     ?>
                     <tr style='background-color: <?= $style_tr ?>'>
