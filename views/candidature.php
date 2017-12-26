@@ -17,7 +17,7 @@ if (
   $lien_annonce = $_POST["lien_annonce"];
   $reponse =  null;
 
-  $candidature = new Candidature($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
+  $candidature = new BDD($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
   $candidature->save();
   echo "<script type='text/javascript'>document.location.replace('/emploi/');</script>";
 }

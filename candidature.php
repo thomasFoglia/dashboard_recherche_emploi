@@ -8,7 +8,6 @@
   <meta name="author" content="">
   <title>Nouvelle candidature</title>
   <?php include('views/includes_css.php');
-  include('model/Candidature.php');
   include('model/BDD.php');
   ?>
 </head>
@@ -16,8 +15,8 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <?php
-
-  $candidature = new Candidature();
+  
+  $candidature = new BDD();
   $all_candidatures = $candidature->getAllCandidatures();
   $total = $candidature->getTotalNumber();
   $nb_days_created_last_days = 7; // parametre + string dans views/liste.php

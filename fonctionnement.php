@@ -8,7 +8,6 @@
   <meta name="author" content="">
   <title>Tableau de bord</title>
   <?php include('views/includes_css.php');
-  include('model/Candidature.php');
   include('model/BDD.php');
   ?>
 </head>
@@ -17,7 +16,7 @@
   <!-- Navigation-->
   <?php
 
-  $candidature = new Candidature();
+  $candidature = new BDD();
   $all_candidatures = $candidature->getAllCandidatures();
   $total = $candidature->getTotalNumber();
   $nb_en_attente = $candidature->getNbEnAttente();
