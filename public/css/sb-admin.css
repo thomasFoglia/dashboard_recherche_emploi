@@ -354,3 +354,25 @@ th {
 .table-responsive {
   overflow: hidden !important;
 }
+
+#nav_alertsDropdown {
+  border: 0;
+}
+
+#nav_alertsDropdown a {
+  color: white !important;
+}
+
+#nav_alertsDropdown a.dropdown-item {
+  color: black !important;
+}
+
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  background: none !important;
+}
+
+#nav_alertsDropdown .fa.fa-fw.fa-bell,
+#nav_alertsDropdown .indicator.d-none.d-lg-block {
+  float: left !important;
+}
