@@ -96,7 +96,7 @@
                       <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
                         <td><?= $cand["mail"] ?></td>
                         <td><?= $cand["telephone"] ?></td>
-
+                        
                         <?php
                         echo "<td>";
                         $array_liens = explode(" ", $cand["lien_annonce"]);
