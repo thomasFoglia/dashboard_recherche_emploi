@@ -4,7 +4,8 @@ if (
   isset($_POST["adresse"]) &&
   isset($_POST["telephone"]) &&
   isset($_POST["mail"]) &&
-  isset($_POST["lien_annonce"])
+  isset($_POST["lien_annonce"]) &&
+  isset($_POST["commentaire"])
 ) {
   $id = null;
   $entreprise = $_POST["entreprise"];
@@ -19,7 +20,7 @@ if (
 
   $candidature = new BDD($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
   $candidature->save();
-  echo "<script type='text/javascript'>document.location.replace('/emploi/');</script>";
+  echo "<script type='text/javascript'>document.location.replace('/emploi/?name_added=$entreprise');</script>";
 }
 
 ?>

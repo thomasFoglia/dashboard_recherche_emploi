@@ -1,5 +1,13 @@
 <div class="content-wrapper" style="margin-left:0;">
   <div class="container-fluid">
+
+    <div id="alertTop" class="alert alert-success alert-success fade show" role="alert" style='display:none;'>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="text"></span>
+    </div>
+
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -78,7 +86,7 @@
                       <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
                       <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
                       <td><?= $cand["entreprise"] ?></td>
-                      <td><a target=_blank href="https://www.google.fr/maps/place/<?= $cand["adresse"] ?>"><?= $cand["adresse"] ?></td>
+                      <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
                         <td><?= $cand["mail"] ?></td>
                         <td><?= $cand["telephone"] ?></td>
 
