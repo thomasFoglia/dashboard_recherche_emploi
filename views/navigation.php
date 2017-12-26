@@ -19,10 +19,13 @@
         </span>
       </a>
       <div class="dropdown-menu" aria-labelledby="alertsDropdown"style="width: 550px;">
-        <h6 class="dropdown-header"><?= $total_a_relancer ?> entreprises à relancer :</h6>
-        <div class="dropdown-divider"></div>
         <?php
         $size_array = count($liste_a_relancer);
+        if ($size_array >= 1) {
+          echo "<h6 class='dropdown-header'>$total_a_relancer entreprises à relancer :</h6>";
+        } else {
+          echo "<h6 class='dropdown-header'>0 entreprises à relancer.</h6>";
+        }
         $i = 1;
         foreach ($liste_a_relancer as $relance) { ?>
 
