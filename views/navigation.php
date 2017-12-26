@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-  <a class="navbar-brand" href="index.php">Recherche emploi</a>
+  <a class="navbar-brand" href=".">Recherche emploi</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -63,21 +63,21 @@
   <ul class="navbar-nav ml-auto" style="margin:0!important;float:left;">
 
     <li>
-      <a class="nav-link" href="index.php">
+      <a class="nav-link" href=".">
         <i class="fa fa-fw fa-table"></i>
         <span class="nav-link-text">Tableau de bord</span>
       </a>
     </li>
 
     <li>
-      <a class="nav-link" href="candidature.php">
+      <a class="nav-link" href="candidature">
         <i class="fa fa-fw fa-plus"></i>
         <span class="nav-link-text">Nouvelle candidature</span>
       </a>
     </li>
 
     <li>
-      <a class="nav-link" href="fonctionnement.php">
+      <a class="nav-link" href="fonctionnement">
         <i class="fa fa-fw fa-question"></i>
         <span class="nav-link-text">Fonctionnement</span>
       </a>
