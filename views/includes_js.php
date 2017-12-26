@@ -22,10 +22,8 @@ $(document).ready(function() {
     sURLVariables = sPageURL.split('&'),
     sParameterName,
     i;
-
     for (i = 0; i < sURLVariables.length; i++) {
       sParameterName = sURLVariables[i].split('=');
-
       if (sParameterName[0] === sParam) {
         return sParameterName[1] === undefined ? true : sParameterName[1];
       }
@@ -43,13 +41,12 @@ $(document).ready(function() {
     $('#alertTop .text').html("Rappel pour <strong>" + name_rappel + "</strong> enregistré.");
     $('#alertTop').show();
   }
-  
+
   var name_no = getUrlParameter('name_no');
   if (typeof(name_no) !== "undefined") {
     $('#alertTop .text').html("<strong>" + name_no + "</strong> enregistré.");
     $('#alertTop').show();
   }
-
 
   $(".btn_rappel").on('click', function() {
     var id_to_update = $(this).parent().parent().find('.id_to_update').text();

@@ -17,7 +17,9 @@
   <?php
 
   $candidature = new BDD();
-  $all_candidatures = $candidature->getAllCandidatures();
+  $all_candidatures_en_cours = $candidature->getAllCandidaturesEnCours();
+  $all_candidatures_en_cours_no_contact = $candidature->getAllCandidaturesEnCoursNoContact();
+  $all_candidatures_refused = $candidature->getAllCandidaturesRefused();
   $total = $candidature->getTotalNumber();
   $nb_en_attente = $candidature->getNbEnAttente();
   $nb_refus = $candidature->getNbRefus();

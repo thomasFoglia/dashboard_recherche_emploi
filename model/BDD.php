@@ -49,7 +49,43 @@ class BDD {
     }
 
     public function getAllCandidatures() {
-      $sql = 'SELECT * FROM enregistrement ORDER BY id DESC';
+      $sql = 'SELECT * FROM enregistrement WHERE `reponse`IS NULL ORDER BY id DESC';
+
+      $stmt = $this->db->prepare($sql);
+      $stmt->execute();
+      $all = [];
+      while ($row = $stmt->fetch()) {
+        $all[] = $row;
+      }
+      return $all;
+    }
+
+    public function getAllCandidaturesEnCours() {
+      $sql = 'SELECT * FROM enregistrement WHERE `reponse`IS NULL ORDER BY id DESC';
+
+      $stmt = $this->db->prepare($sql);
+      $stmt->execute();
+      $all = [];
+      while ($row = $stmt->fetch()) {
+        $all[] = $row;
+      }
+      return $all;
+    }
+
+    public function getAllCandidaturesEnCoursNoContact() {
+      $sql = 'SELECT * FROM enregistrement WHERE `reponse`IS NULL AND (`telephone` = "" AND `mail` = "") ORDER BY id DESC';
+
+      $stmt = $this->db->prepare($sql);
+      $stmt->execute();
+      $all = [];
+      while ($row = $stmt->fetch()) {
+        $all[] = $row;
+      }
+      return $all;
+    }
+
+    public function getAllCandidaturesRefused() {
+      $sql = 'SELECT * FROM enregistrement WHERE `reponse` = "non" ORDER BY id DESC';
 
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
@@ -81,7 +117,7 @@ class BDD {
       $mail = $this->mail;
       $commentaire = $this->commentaire;
       $lien_annonce = $this->lien_annonce;
-      
+
       $sql = "INSERT INTO enregistrement (`entreprise`, `adresse`, `dateDemande`, `telephone`, `mail`, `dateRappel`,`commentaire`, `lien_annonce`, `reponse`)
       VALUES (:entreprise, :adresse, :dateDemande, :telephone, :mail, null, :commentaire, :lien_annonce, null)";
       $req = $this->db->prepare($sql);
@@ -137,7 +173,7 @@ class BDD {
       $date_max = $this->getDateDaysAgo($nb_days);
 
       // pas rappelé au bout de 5 jours
-      $sql = "SELECT `id` FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL";
+      $sql = "SELECT `id` FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL AND (`telephone` <> '' AND `mail` <> '')";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       $nb1 = $stmt->rowCount();
@@ -159,7 +195,7 @@ class BDD {
 
       $a_relancer = array();
       // pas rappelé au bout de 5 jours
-      $sql = "SELECT * FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL";
+      $sql = "SELECT * FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL AND (`telephone` <> '' AND `mail` <> '')";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       while ($row = $stmt->fetch()) {

@@ -23,9 +23,8 @@
             <div class="card-body-icon">
               <i class="fa fa-fw fa-list"></i>
             </div>
-            <div class="mr-5"><?= $total ?> candidatures au total
-              <br><span style='font-size:13px;'><b><i><?= $nb_en_attente ?> en cours</i></b></span>
-              <span style='font-size:13px;'><i>et <?= $nb_refus ?> refus</i></span>
+            <div class="mr-5"><?= $nb_en_attente ?> candidatures en cours (dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts)
+              <br><span style='font-size:13px;'><i><?= $total ?> candidatures envoyées au total</i></span>
             </div>
           </div>
         </div>
@@ -59,13 +58,14 @@
           </div>
         </div>
       </div>
-      <!-- Example DataTables Card-->
+
+      <!-- candidatures en cours -->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Liste des demandes</div>
+          <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_en_cours) ?> candidatures en cours (dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts)</div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style='font-size:12px;'>
+              <table class="table table-bordered" id="dataTableEnCours" width="100%" cellspacing="0" style='font-size:12px;'>
                 <thead>
                   <tr>
                     <th style='display:none;'>ID</th>
@@ -81,8 +81,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($all_candidatures as $cand) { ?>
-                    <tr>
+                  <?php foreach ($all_candidatures_en_cours as $cand) {
+
+                    // candidatures dont on n'a pas les coordonnées pour rappeler
+                    $style_tr = "";
+                    if ($cand["mail"] == "" && $cand["telephone"] == "") {
+                      $style_tr = "#D4D4D4"; // gris
+                    }
+                    ?>
+                    <tr style='background-color: <?= $style_tr ?>'>
                       <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
                       <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
                       <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
@@ -103,15 +110,21 @@
 
                         <td><?= $cand["commentaire"] ?></td>
                         <?php
+                        // refus
                         if($cand["reponse"] == "non") {
-                          $dateRappel = "Non";
+                          $dateRappel = "Non mais refus";
                         } else if($cand["dateRappel"] == null) {
-                          $dateRappel = "<button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Oui</button>";
+                          $dateRappel = "Pas encore<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
                         } else {
                           $dateRappel = date("d/m/Y", strtotime($cand["dateRappel"]));
+                          $dateRappel .= "<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
+                        }
+                        // si on ne peut pas rappeler : pas de mail ni téléphone
+                        if ($cand["mail"] == null && $cand["telephone"] == null) {
+                          $dateRappel = "Aucun contact";
                         }
                         ?>
-                        <td><?= $dateRappel ?></td>
+                        <td style='text-align:center;'><?= $dateRappel ?></td>
                         <td>
                           <?php if($cand["reponse"] == "non") {
                             echo "Non";
@@ -128,7 +141,60 @@
                 </table>
               </div>
             </div>
-            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
           </div>
-        </div>
-      </div>
+
+          <br><br><br>
+          <!--  candidatures refusées -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_refused) ?> candidatures refusées</div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTableRefused" width="100%" cellspacing="0" style='font-size:12px;'>
+                    <thead>
+                      <tr>
+                        <th style='display:none;'>ID</th>
+                        <th>Date demande</th>
+                        <th>Entreprise</th>
+                        <th>Adresse</th>
+                        <th>Mail</th>
+                        <th>Téléphone</th>
+                        <th>Lien annonce</th>
+                        <th>Commentaire</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($all_candidatures_refused as $cand) {
+
+                        ?>
+                        <tr>
+                          <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
+                          <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
+                          <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
+                          <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
+                            <td><?= $cand["mail"] ?></td>
+                            <td><?= $cand["telephone"] ?></td>
+
+                            <?php
+                            echo "<td>";
+                            $array_liens = explode(" ", $cand["lien_annonce"]);
+                            foreach ($array_liens as $lien) {
+                              if ($lien != "") {
+                                echo "<a target=_blank href=$lien>$lien<br>";
+                              }
+                            }
+                            echo "</td>";
+                            ?>
+
+                            <td><?= $cand["commentaire"] ?></td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>

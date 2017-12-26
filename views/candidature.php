@@ -40,7 +40,7 @@ if (
           <div class="card-body" style='padding:0 !important;'>
             <form action="" method='post'>
               <div class="form-group" style='margin-bottom:7px !important'>
-                <label for="entreprise">Entreprise</label>
+                <label for="entreprise">Entreprise *</label>
                 <input class="form-control" id="entreprise" name="entreprise" type="text" placeholder="Nom de l'entreprise" required>
               </div>
               <div class="form-group" style='margin-bottom:7px !important'>
