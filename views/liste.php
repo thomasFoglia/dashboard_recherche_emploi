@@ -65,7 +65,7 @@
           <i class="fa fa-table"></i> Liste des demandes</div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style='font-size:11px;'>
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style='font-size:12px;'>
                 <thead>
                   <tr>
                     <th style='display:none;'>ID</th>
@@ -76,8 +76,8 @@
                     <th>Téléphone</th>
                     <th>Lien annonce</th>
                     <th>Commentaire</th>
-                    <th>Rappelé?</th>
-                    <th>Réponse</th>
+                    <th style='width:45px !important;'>Rappelé ?</th>
+                    <th style='width:45px !important;'>Réponse</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,7 +85,7 @@
                     <tr>
                       <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
                       <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
-                      <td><?= $cand["entreprise"] ?></td>
+                      <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
                       <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
                         <td><?= $cand["mail"] ?></td>
                         <td><?= $cand["telephone"] ?></td>

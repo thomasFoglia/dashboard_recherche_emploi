@@ -376,3 +376,7 @@ th {
 #nav_alertsDropdown .indicator.d-none.d-lg-block {
   float: left !important;
 }
+
+.close {
+  cursor: pointer;
+}

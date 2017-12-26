@@ -38,9 +38,22 @@ $(document).ready(function() {
     $('#alertTop').show();
   }
 
+  var name_rappel = getUrlParameter('name_rappel');
+  if (typeof(name_rappel) !== "undefined") {
+    $('#alertTop .text').html("Rappel pour <strong>" + name_rappel + "</strong> enregistré.");
+    $('#alertTop').show();
+  }
+  
+  var name_no = getUrlParameter('name_no');
+  if (typeof(name_no) !== "undefined") {
+    $('#alertTop .text').html("<strong>" + name_no + "</strong> enregistré.");
+    $('#alertTop').show();
+  }
+
 
   $(".btn_rappel").on('click', function() {
     var id_to_update = $(this).parent().parent().find('.id_to_update').text();
+    var name_to_update = $(this).parent().parent().find('.name_to_update').text();
 
     var today = new Date();
     var dd = today.getDate();
@@ -60,7 +73,7 @@ $(document).ready(function() {
       data: jQuery.param({id: id_to_update, rappel: today}),
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       success: function (response) {
-        location.reload();
+        document.location.replace('/emploi/?name_rappel=' + name_to_update);
       }
     });
   });
@@ -68,6 +81,7 @@ $(document).ready(function() {
   $(".btn_reponse").on('change', function() {
     if (this.value == "non") {
       var id_to_update = $(this).parent().parent().find('.id_to_update').text();
+      var name_to_update = $(this).parent().parent().find('.name_to_update').text();
       var rep = this.value;
 
       $.ajax({
@@ -76,7 +90,7 @@ $(document).ready(function() {
         data: jQuery.param({id: id_to_update, reponse: rep}),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         success: function (response) {
-          location.reload();
+          document.location.replace('/emploi/?name_no=' + name_to_update);
         }
       });
     }
