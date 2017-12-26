@@ -380,3 +380,7 @@ th {
 .close {
   cursor: pointer;
 }
+
+  table input[type=text] {
+  border: 0;
+}

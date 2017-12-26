@@ -48,6 +48,37 @@ $(document).ready(function() {
     $('#alertTop').show();
   }
 
+  var update_value = getUrlParameter('update_value');
+  if (typeof(update_value) !== "undefined") {
+    $('#alertTop .text').html("<strong>" + update_value + "</strong> mis à jour.");
+    $('#alertTop').show();
+  }
+
+  // save value en ajax
+  $('.input_ajax_save').keypress(function(event){
+    var that = $(this);
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13') {
+      var name_to_update = $(this).parent().parent().find('.name_to_update').text();
+      var target = $(this).attr('target');
+      var param_id = $(this).attr('param_id');
+      var param_field = $(this).attr('param_field');
+      var value = $(this).val();
+
+      $.ajax({
+        url: target,
+        type: 'POST',
+        data: jQuery.param({id: param_id, field: param_field, value: value}),
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        success: function (response) {
+          that.blur();
+          document.location.replace('/emploi/?update_value=' + name_to_update);
+        }
+      });
+
+    }
+  });
+
   $(".btn_rappel").on('click', function() {
     var id_to_update = $(this).parent().parent().find('.id_to_update').text();
     var name_to_update = $(this).parent().parent().find('.name_to_update').text();

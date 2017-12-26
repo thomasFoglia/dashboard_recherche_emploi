@@ -82,6 +82,7 @@
                 </thead>
                 <tbody>
                   <?php foreach ($all_candidatures_en_cours as $cand) {
+                    $id = $cand['id'];
 
                     // candidatures dont on n'a pas les coordonnées pour rappeler
                     $style_tr = "";
@@ -93,108 +94,120 @@
                       <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
                       <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
                       <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
-                      <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
-                        <td><?= $cand["mail"] ?></td>
-                        <td><?= $cand["telephone"] ?></td>
-                        
-                        <?php
-                        echo "<td>";
-                        $array_liens = explode(" ", $cand["lien_annonce"]);
-                        foreach ($array_liens as $lien) {
-                          if ($lien != "") {
-                            echo "<a target=_blank href='$lien'>lien<br>";
-                          }
-                        }
-                        echo "</td>";
-                        ?>
+                      <td>
 
-                        <td><?= $cand["commentaire"] ?></td>
-                        <?php
-                        // refus
-                        if($cand["reponse"] == "non") {
-                          $dateRappel = "Non mais refus";
-                        } else if($cand["dateRappel"] == null) {
-                          $dateRappel = "Pas encore<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
-                        } else {
-                          $dateRappel = date("d/m/Y", strtotime($cand["dateRappel"]));
-                          $dateRappel .= "<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
-                        }
-                        // si on ne peut pas rappeler : pas de mail ni téléphone
-                        if ($cand["mail"] == null && $cand["telephone"] == null) {
-                          $dateRappel = "Aucun contact";
-                        }
-                        ?>
-                        <td style='text-align:center;'><?= $dateRappel ?></td>
-                        <td>
-                          <?php if($cand["reponse"] == "non") {
-                            echo "Non";
-                          } else { ?>
-                            <select class="btn_reponse form-control">
-                              <option></option>
-                              <option value='non'>Non</option>
-                            </select>
-                          <?php } ?>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+                        <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="adresse" value="<?= $cand["adresse"] ?>">
 
-          <br><br><br>
-          <!--  candidatures refusées -->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_refused) ?> candidatures refusées</div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTableRefused" width="100%" cellspacing="0" style='font-size:12px;'>
-                    <thead>
-                      <tr>
-                        <th style='display:none;'>ID</th>
-                        <th>Date demande</th>
-                        <th>Entreprise</th>
-                        <th>Adresse</th>
-                        <th>Mail</th>
-                        <th>Téléphone</th>
-                        <th>Lien annonce</th>
-                        <th>Commentaire</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($all_candidatures_refused as $cand) {
 
-                        ?>
-                        <tr>
-                          <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
-                          <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
-                          <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
-                          <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
-                            <td><?= $cand["mail"] ?></td>
-                            <td><?= $cand["telephone"] ?></td>
+                        <br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
+                          <td>
+                            <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="mail" value="<?= $cand["mail"] ?>">
+                          </td>
 
-                            <?php
-                            echo "<td>";
-                            $array_liens = explode(" ", $cand["lien_annonce"]);
-                            foreach ($array_liens as $lien) {
-                              if ($lien != "") {
-                                echo "<a target=_blank href=$lien>lien<br>";
-                              }
+                          <td>
+                            <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="telephone" value="<?= $cand["telephone"] ?>">
+                          </td>
+
+                          <?php
+                          echo "<td>";
+                          $array_liens = explode(" ", $cand["lien_annonce"]);
+                          foreach ($array_liens as $lien) {
+                            if ($lien != "") {
+                              echo "<a target=_blank href='$lien'>lien<br>";
                             }
-                            echo "</td>";
-                            ?>
+                          }
+                          echo "</td>";
+                          ?>
 
-                            <td><?= $cand["commentaire"] ?></td>
-                          </tr>
-                        <?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
+                          <td>
+                            <input style='background-color:<?=$style_tr?> 'class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="commentaire" value="<?= $cand["commentaire"] ?>">
+                          </td>
+                          <?php
+                          // refus
+                          if($cand["reponse"] == "non") {
+                            $dateRappel = "Non mais refus";
+                          } else if($cand["dateRappel"] == null) {
+                            $dateRappel = "Pas encore<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
+                          } else {
+                            $dateRappel = date("d/m/Y", strtotime($cand["dateRappel"]));
+                            $dateRappel .= "<br><br><button type='button' class='btn_rappel btn btn-outline-secondary' style='width:100%'>Maintenant</button>";
+                          }
+                          // si on ne peut pas rappeler : pas de mail ni téléphone
+                          if ($cand["mail"] == null && $cand["telephone"] == null) {
+                            $dateRappel = "Aucun contact";
+                          }
+                          ?>
+                          <td style='text-align:center;'><?= $dateRappel ?></td>
+                          <td>
+                            <?php if($cand["reponse"] == "non") {
+                              echo "Non";
+                            } else { ?>
+                              <select class="btn_reponse form-control">
+                                <option></option>
+                                <option value='non'>Non</option>
+                              </select>
+                            <?php } ?>
+                          </td>
+                        </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-
-
             </div>
-          </div>
+
+            <br><br><br>
+            <!--  candidatures refusées -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_refused) ?> candidatures refusées</div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTableRefused" width="100%" cellspacing="0" style='font-size:12px;'>
+                      <thead>
+                        <tr>
+                          <th style='display:none;'>ID</th>
+                          <th>Date demande</th>
+                          <th>Entreprise</th>
+                          <th>Adresse</th>
+                          <th>Mail</th>
+                          <th>Téléphone</th>
+                          <th>Lien annonce</th>
+                          <th>Commentaire</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($all_candidatures_refused as $cand) {
+
+                          ?>
+                          <tr>
+                            <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
+                            <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
+                            <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
+                            <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
+                              <td><?= $cand["mail"] ?></td>
+                              <td><?= $cand["telephone"] ?></td>
+
+                              <?php
+                              echo "<td>";
+                              $array_liens = explode(" ", $cand["lien_annonce"]);
+                              foreach ($array_liens as $lien) {
+                                if ($lien != "") {
+                                  echo "<a target=_blank href=$lien>lien<br>";
+                                }
+                              }
+                              echo "</td>";
+                              ?>
+
+                              <td><?= $cand["commentaire"] ?></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>

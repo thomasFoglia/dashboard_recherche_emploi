@@ -266,4 +266,14 @@ class BDD {
       return true;
     }
 
+    public function updateField($id, $field, $value) {
+      $sql = "UPDATE enregistrement SET `$field`= '".$value."' WHERE `id` = '".$id."' ";
+      $req = $this->db->prepare($sql);
+      $ret = $req->execute(array(
+        "value" => $value,
+        "id" => $id
+      ));
+      return $sql;
+    }
+
   }
