@@ -97,9 +97,12 @@
                       <td>
 
                         <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="adresse" value="<?= $cand["adresse"] ?>">
+                        <br>
+                        <?php if ($cand["adresse"] != "") { ?>
+                          <a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire
+                        <?php } ?>
 
-
-                        <br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
+                        </td>
                           <td>
                             <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="mail" value="<?= $cand["mail"] ?>">
                           </td>
@@ -184,7 +187,11 @@
                             <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
                             <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
                             <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
-                            <td><?= $cand["adresse"] ?><br><a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire</td>
+                            <td><?= $cand["adresse"] ?>
+                              <br>
+                              <?php if ($cand["adresse"] != "") { ?>
+                                <a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire
+                              <?php } ?>
                               <td><?= $cand["mail"] ?></td>
                               <td><?= $cand["telephone"] ?></td>
 
