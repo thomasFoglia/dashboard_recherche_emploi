@@ -102,7 +102,7 @@
                         $array_liens = explode(" ", $cand["lien_annonce"]);
                         foreach ($array_liens as $lien) {
                           if ($lien != "") {
-                            echo "<a target=_blank href=$lien>$lien<br>";
+                            echo "<a target=_blank href='$lien'>lien<br>";
                           }
                         }
                         echo "</td>";
@@ -180,7 +180,7 @@
                             $array_liens = explode(" ", $cand["lien_annonce"]);
                             foreach ($array_liens as $lien) {
                               if ($lien != "") {
-                                echo "<a target=_blank href=$lien>$lien<br>";
+                                echo "<a target=_blank href=$lien>lien<br>";
                               }
                             }
                             echo "</td>";
