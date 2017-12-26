@@ -8,6 +8,7 @@ class BDD {
 
   public $id;
   public $entreprise;
+  public $type;
   public $adresse;
   public $dateDemande;
   public $telephone;
@@ -20,6 +21,7 @@ class BDD {
   function __construct(
     $id = null,
     $entreprise = null,
+    $type = null,
     $adresse = null,
     $dateDemande = null,
     $telephone = null,
@@ -31,6 +33,7 @@ class BDD {
 
       $this->id = $id;
       $this->entreprise = $entreprise;
+      $this->type = $type;
       $this->adresse = $adresse;
       $this->dateDemande = $dateDemande;
       $this->telephone = $telephone;
@@ -111,6 +114,7 @@ class BDD {
     public function insert() {
 
       $entreprise = $this->entreprise;
+      $type = $this->type;
       $adresse = $this->adresse;
       $dateDemande = $this->dateDemande;
       $telephone = $this->telephone;
@@ -118,11 +122,12 @@ class BDD {
       $commentaire = $this->commentaire;
       $lien_annonce = $this->lien_annonce;
 
-      $sql = "INSERT INTO enregistrement (`entreprise`, `adresse`, `dateDemande`, `telephone`, `mail`, `dateRappel`,`commentaire`, `lien_annonce`, `reponse`)
-      VALUES (:entreprise, :adresse, :dateDemande, :telephone, :mail, null, :commentaire, :lien_annonce, null)";
+      $sql = "INSERT INTO enregistrement (`entreprise`, `type`, `adresse`, `dateDemande`, `telephone`, `mail`, `dateRappel`,`commentaire`, `lien_annonce`, `reponse`)
+      VALUES (:entreprise, :type, :adresse, :dateDemande, :telephone, :mail, null, :commentaire, :lien_annonce, null)";
       $req = $this->db->prepare($sql);
 
       $req->bindParam(':entreprise', $entreprise);
+      $req->bindParam(':type', $type);
       $req->bindParam(':adresse', $adresse);
       $req->bindParam(':dateDemande', $dateDemande);
       $req->bindParam(':telephone', $telephone);

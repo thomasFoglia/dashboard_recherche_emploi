@@ -1,6 +1,7 @@
 <?php
 if (
   isset($_POST["entreprise"]) &&
+  isset($_POST["type"]) &&
   isset($_POST["adresse"]) &&
   isset($_POST["telephone"]) &&
   isset($_POST["mail"]) &&
@@ -9,6 +10,7 @@ if (
 ) {
   $id = null;
   $entreprise = $_POST["entreprise"];
+  $type = $_POST["type"];
   $adresse = $_POST["adresse"];
   $dateDemande = date('Y-m-d');
   $telephone = $_POST["telephone"];
@@ -18,7 +20,7 @@ if (
   $lien_annonce = $_POST["lien_annonce"];
   $reponse =  null;
 
-  $candidature = new BDD($id, $entreprise, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
+  $candidature = new BDD($id, $entreprise, $type, $adresse, $dateDemande, $telephone, $mail, $dateRappel, $commentaire, $lien_annonce, $reponse);
   $candidature->save();
   echo "<script type='text/javascript'>document.location.replace('/emploi/?name_added=$entreprise');</script>";
 }
@@ -42,6 +44,16 @@ if (
               <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="entreprise">Entreprise *</label>
                 <input class="form-control" id="entreprise" name="entreprise" type="text" placeholder="Nom de l'entreprise" required>
+              </div>
+              <div class="form-group" style='margin-bottom:7px !important'>
+                <label for="entreprise">Type</label>
+                <select class="form-control" id="type" name="type" type="text">
+                  <option value=""></option>
+                  <option value="Stage">Stage</option>
+                  <option value="Intérim">Intérim</option>
+                  <option value="CDD">CDD</option>
+                  <option value="CDI">CDI</option>
+                </select>
               </div>
               <div class="form-group" style='margin-bottom:7px !important'>
                 <label for="adresse">Adresse</label>
