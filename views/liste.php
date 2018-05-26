@@ -69,14 +69,13 @@
                 <thead>
                   <tr>
                     <th style='display:none;'>ID</th>
-                    <th>Date demande</th>
+                    <th>Date</th>
                     <th>Entreprise</th>
                     <th>Type</th>
                     <th>Adresse</th>
                     <th>Mail</th>
-                    <th>Téléphone</th>
-                    <th>Lien annonce</th>
-                    <th>Commentaire</th>
+                    <th>Tél.</th>
+                    <th>Com.</th>
                     <th style='width:45px !important;'>Rappelé ?</th>
                     <th style='width:45px !important;'>Réponse</th>
                   </tr>
@@ -93,14 +92,22 @@
                     ?>
                     <tr style='background-color: <?= $style_tr ?>'>
                       <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
-                      <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
+                      <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?> <br>
+                        <?php
+                        $array_liens = explode(" ", $cand["lien_annonce"]);
+                        foreach ($array_liens as $lien) {
+                          if ($lien != "") {
+                            echo "<a target=_blank href=$lien>Lien<br>";
+                          }
+                        } ?>
+                      </td>
                       <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
                       <td>
                         <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="type" value="<?= $cand["type"] ?>">
                       </td>
                       <td>
 
-                        <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="adresse" value="<?= $cand["adresse"] ?>">
+                        <input placeholder='Adresse' style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="adresse" value="<?= $cand["adresse"] ?>">
                         <br>
                         <?php if ($cand["adresse"] != "") { ?>
                           <a target=_blank href="https://www.google.fr/maps/dir/41+Boulevard+Joseph+Vallier,+Grenoble/<?= $cand["adresse"] ?>">Itinéraire
@@ -108,26 +115,15 @@
 
                         </td>
                         <td>
-                          <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="mail" value="<?= $cand["mail"] ?>">
+                          <input placeholder='Mail' style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="mail" value="<?= $cand["mail"] ?>">
                         </td>
 
                         <td>
-                          <input style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="telephone" value="<?= $cand["telephone"] ?>">
+                          <input placeholder='Tél.' style='background-color:<?=$style_tr?>' class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="telephone" value="<?= $cand["telephone"] ?>">
                         </td>
 
-                        <?php
-                        echo "<td>";
-                        $array_liens = explode(" ", $cand["lien_annonce"]);
-                        foreach ($array_liens as $lien) {
-                          if ($lien != "") {
-                            echo "<a target=_blank href='$lien'>lien<br>";
-                          }
-                        }
-                        echo "</td>";
-                        ?>
-
                         <td>
-                          <input style='background-color:<?=$style_tr?> 'class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="commentaire" value="<?= $cand["commentaire"] ?>">
+                          <input placeholder='Com.' style='background-color:<?=$style_tr?> 'class='input_ajax_save' type='text' target='ajax/updateField' param_id="<?=$id?>" param_field="commentaire" value="<?= $cand["commentaire"] ?>">
                         </td>
                         <?php
                         // refus
@@ -174,13 +170,12 @@
                     <thead>
                       <tr>
                         <th style='display:none;'>ID</th>
-                        <th>Date demande</th>
+                        <th>Date</th>
                         <th>Entreprise</th>
                         <th>Adresse</th>
                         <th>Mail</th>
-                        <th>Téléphone</th>
-                        <th>Lien annonce</th>
-                        <th>Commentaire</th>
+                        <th>Tél.</th>
+                        <th>Com.</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -189,7 +184,15 @@
                         ?>
                         <tr>
                           <td class='id_to_update' style='display:none;'><?= $cand["id"] ?></td>
-                          <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?></td>
+                          <td><?= date("d/m/Y", strtotime($cand["dateDemande"])); ?><br>
+                            <?php
+                            $array_liens = explode(" ", $cand["lien_annonce"]);
+                            foreach ($array_liens as $lien) {
+                              if ($lien != "") {
+                                echo "<a target=_blank href=$lien>Lien<br>";
+                              }
+                            }?>
+                          </td>
                           <td class='name_to_update' ><?= $cand["entreprise"] ?></td>
                           <td><?= $cand["adresse"] ?>
                             <br>
@@ -198,17 +201,6 @@
                               <?php } ?>
                               <td><?= $cand["mail"] ?></td>
                               <td><?= $cand["telephone"] ?></td>
-
-                              <?php
-                              echo "<td>";
-                              $array_liens = explode(" ", $cand["lien_annonce"]);
-                              foreach ($array_liens as $lien) {
-                                if ($lien != "") {
-                                  echo "<a target=_blank href=$lien>lien<br>";
-                                }
-                              }
-                              echo "</td>";
-                              ?>
 
                               <td><?= $cand["commentaire"] ?></td>
                             </tr>
