@@ -178,7 +178,7 @@ class BDD {
       $date_max = $this->getDateDaysAgo($nb_days);
 
       // pas rappelé au bout de 5 jours
-      $sql = "SELECT `id` FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL AND (`telephone` <> '' AND `mail` <> '')";
+      $sql = "SELECT `id` FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL /*AND (`telephone` <> '' AND `mail` <> '')*/";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       $nb1 = $stmt->rowCount();
@@ -200,7 +200,7 @@ class BDD {
 
       $a_relancer = array();
       // pas rappelé au bout de 5 jours
-      $sql = "SELECT * FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL AND (`telephone` <> '' AND `mail` <> '')";
+      $sql = "SELECT * FROM enregistrement WHERE dateDemande <= '$date_max' AND `dateRappel` IS NULL AND `reponse` IS NULL /*AND (`telephone` <> '' AND `mail` <> '')*/";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       while ($row = $stmt->fetch()) {

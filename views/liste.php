@@ -23,7 +23,10 @@
             <div class="card-body-icon">
               <i class="fa fa-fw fa-list"></i>
             </div>
-            <div class="mr-5"><?= $nb_en_attente ?> candidatures en cours (dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts)
+            <?php
+            $style_no_contact = sizeof($all_candidatures_en_cours_no_contact) > 0 ? "font-weight:bold'" : "";
+            ?>
+            <div class="mr-5"><?= $nb_en_attente ?> candidatures en cours <span style='<?= $style_no_contact?>'>(dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts</span>)
               <br><span style='font-size:13px;'><i><?= $total ?> candidatures envoyées au total</i></span>
             </div>
           </div>
@@ -62,7 +65,10 @@
       <!-- candidatures en cours -->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_en_cours) ?> candidatures en cours (dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts)</div>
+          <?php
+          $style_no_contact = sizeof($all_candidatures_en_cours_no_contact) > 0 ? "font-weight:bold'" : "";
+          ?>
+          <i class="fa fa-table"></i> &nbsp;<?= sizeof($all_candidatures_en_cours) ?> candidatures en cours (<span style='<?=$style_no_contact?>'>dont <?= sizeof($all_candidatures_en_cours_no_contact) ?> sans contacts </span>)</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTableEnCours" width="100%" cellspacing="0" style='font-size:12px;'>
@@ -88,6 +94,9 @@
                     $style_tr = "";
                     if ($cand["mail"] == "" && $cand["telephone"] == "") {
                       $style_tr = "#f4f4f4"; // gris
+                    }
+                    if (in_array($cand["entreprise"], $entr_a_relancer)) {
+                      $style_tr = "#ffb3b3"; // gris
                     }
                     ?>
                     <tr style='background-color: <?= $style_tr ?>'>
@@ -145,7 +154,7 @@
                           <?php if($cand["reponse"] == "non") {
                             echo "Non";
                           } else { ?>
-                            <select class="btn_reponse form-control">
+                            <select style='background-color:<?=$style_tr?>' class="btn_reponse form-control">
                               <option></option>
                               <option value='non'>Non</option>
                             </select>

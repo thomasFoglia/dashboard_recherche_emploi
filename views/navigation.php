@@ -47,6 +47,9 @@
               <?php if ($relance["coordonnees"]["mail"] != null) { ?>
                 <div class="dropdown-message small">Mail : <b><?= $relance["coordonnees"]["mail"] ?></b></div>
               <?php } ?>
+              <?php if ($relance["coordonnees"]["telephone"] == null && $relance["coordonnees"]["mail"] == null) { ?>
+                <div class="dropdown-message small"><b>Aucun contact ...</b></div>
+              <?php } ?>
             </a>
             <?php if($size_array > $i) { // empeche un divider en trop sur le dernier item de la liste?>
               <div class="dropdown-divider"></div>

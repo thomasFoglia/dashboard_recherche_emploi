@@ -28,6 +28,10 @@
   $nb_days_a_relancer = 5;
   $total_a_relancer = $candidature->getTotalArelancer($nb_days_a_relancer);
   $liste_a_relancer = $candidature->getListeArelancer($nb_days_a_relancer);
+  $entr_a_relancer = [];
+  foreach ($liste_a_relancer as $rel) {
+    $entr_a_relancer[] = $rel["entreprise"];
+  }
 
   include('views/navigation.php');
   include('views/liste.php');
