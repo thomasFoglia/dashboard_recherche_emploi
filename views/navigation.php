@@ -18,7 +18,7 @@
           <i class="" style="font-weight:bold;padding: 0 8px;font-size: 14px; "><?= $total_a_relancer ?></i>
         </span>
       </a>
-      <div class="dropdown-menu" aria-labelledby="alertsDropdown"style="width: 750px;">
+      <div class="dropdown-menu" aria-labelledby="alertsDropdown"style="width: 900px;">
         <?php
         $size_array = count($liste_a_relancer);
         if ($size_array >= 1) {
