@@ -49,6 +49,7 @@ if (
                 <label for="entreprise">Type</label>
                 <select class="form-control" id="type" name="type" type="text">
                   <option value=""></option>
+                  <option value="Alternance">Alternance</option>
                   <option value="Stage">Stage</option>
                   <option value="Intérim">Intérim</option>
                   <option value="CDD">CDD</option>
